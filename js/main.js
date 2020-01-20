@@ -1,14 +1,11 @@
 function getData(url, cb) {
+   var xhr = new XMLHttpRequest();
 
-    var xhr = new XMLHttpRequest();
-
-    xhr.open("GET", "url");
-    xhr.send();
-
-
+   xhr.open("GET", "url");
+   xhr.send();
     xhr.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            cb(JSON.parse(this.responseText));
+ if (this.readyState == 4 && this.status == 200) {
+   cb(JSON.parse(this.responseText));
 
         }
 

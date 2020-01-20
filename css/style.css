@@ -69,8 +69,8 @@ section .container-fluid {
 footer {
     background-color: #525252;
     color: #95f3f3;
-    min-height: 120px;
-    margin: 0;
+    min-height: 10px;
+    margin-left: auto;
 }
 
 .col-sm-4 {
@@ -109,9 +109,18 @@ footer {
 li a i:hover {
     background: #e84610;
 }
+.hvr-sweep-to-bottom{
+display: inline-block;
+    vertical-align: middle;
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px transparent;
+    position: relative;
+    transition-property: color;
+    transition-duration: .3s;
+}
 
 #footer-details {
-    margin: 20px;
+    margin: 10px;
 }
 
 

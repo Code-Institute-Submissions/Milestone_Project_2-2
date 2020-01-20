@@ -20,18 +20,33 @@
     <div class="row bg-color-name-title destinations">
       <h3>Looking for a Break?</h3>
       <div class="col-md-12">
-        <button onclick="writeToDocument('https://www.skyscanner.net/news/10-mediterranean-destinations-you-cant-miss')">Mediterranien</button>
-        <button onclick="writeToDocument('https://www.virginholidays.co.uk/destinations/caribbean-holidays')">Carribean</button>
-        <button onclick="writeToDocument('https://www.europeanbestdestinations.com/destinations/')">Europe</button>
+        <button><a href='https://www.skyscanner.net/news/10-mediterranean-destinations-you-cant-miss' target="_blank" class="hvr-sweep-to-bottom">Mediterranien</button></a>
+        <button><a href='https://www.virginholidays.co.uk/destinations/caribbean-holidays'target="_blank" class ="hvr-sweep-to-bottom" >Carribean</button></a>
+        <button><a href='https://www.europeanbestdestinations.com/destinations/' target ="_blank" class ="hvr-sweep-to-bottom">Europe</button></a>
         <p class="wish">Choose one of our Recommended Destinations</p>
-      </header>
-    <div id="map"></div>
+  </header
   <section class="container-fluid">
-    <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDHHyac2SiOYPNYxXMK7rqJjnB8nCaaxE&callback=initMap" async defer></script>
-    <script type="text/javascript" src="js/maps.js"></script>
+    <div id="map"></div>
   </section>
+  <footer class="container-fluid no gutter">
+    <div id="footer-details " class="row">
+      <div class="col-sm-4 ">
+        <h5 class="uppercase ">Follow Us</h5>
+        <ul class="list-inline social-links ">
+          <li><a target="_blank " href="# "><i class="fa fa-facebook "></i></a></li>
+          <li><a target="_blank " href="# "><i class="fa fa-twitter "></i></a></li>
+          <li><a target="_blank " href="# "><i class="fa fa-linkedin "></i></a></li>
+          <li><a target="_blank " href="# "><i class="fa fa-pinterest "></i></a></li>
+          <li><a target="_blank " href="# "><i class="fa fa-instagram "></i></a></li>
+          <li><a target="_blank " href="# "><i class="fa fa-youtube "></i></a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+  <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDHHyac2SiOYPNYxXMK7rqJjnB8nCaaxE&callback=initMap" async defer></script>
+  <script type="text/javascript" src="js/maps.js"></script>
+
 </body>
 
 </html>
-  
