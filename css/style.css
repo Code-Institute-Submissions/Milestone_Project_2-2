@@ -69,20 +69,23 @@ section .container-fluid {
 footer {
     background-color: #525252;
     color: #95f3f3;
-    min-height: 10px;
-    margin-left: auto;
+    min-height: 5px;
+    margin-left: 10px;
 }
 
 .col-sm-4 {
     position: relative;
-    min-height: 1px;
+    min-height: 5px;
     padding-right: 25px;
     padding-left: 25px;
 }
-
+.uppercase {
+    text-transform: uppercase;
+    background: no-repeat;
+}
 .row {
-    margin-right: -20px;
-    margin-left: -20px;
+    margin: 0px;
+
 }
 
 .social-links {
@@ -108,9 +111,11 @@ footer {
 
 li a i:hover {
     background: #e84610;
+    color: #95f3f3;
 }
-.hvr-sweep-to-bottom{
-display: inline-block;
+
+.hvr-sweep-to-bottom {
+    display: inline-block;
     vertical-align: middle;
     transform: perspective(1px) translateZ(0);
     box-shadow: 0 0 1px transparent;
@@ -120,7 +125,7 @@ display: inline-block;
 }
 
 #footer-details {
-    margin: 10px;
+    margin: 1px;
 }
 
 

@@ -7,10 +7,10 @@
   <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.1.1/css/hover-min.css" type="text/css" />
   <link rel="stylesheet" href="css/style.css" type="text/css" />
+  <meta charset="UTF-8">
   <meta name="viewport" content="initial-scale=1.0">
-  <meta charset="utf-8">
+  <title>Project_MS_2</title>
 </head>
-
 <body>
   <header>
     <div class="row">
@@ -19,54 +19,60 @@
     <div class="row bg-color-name-title destinations">
       <h3>Looking for a Break?</h3>
       <div class="col-md-12">
-<button><a href="https://www.skyscanner.net/news/10-mediterranean-destinations-you-cant-miss" target ="_blank">Mediterranien</button></a>
-<button><a href="https://www.virginholidays.co.uk/destinations/caribbean-holidays" target= "_blank">Caribbean</button></a>
-<button><a href="https://www.europeanbestdestinations.com/destinations/" target="_blank">Europe</button></a>
+        <a href="https://www.skyscanner.net/news/10-mediterranean-destinations-you-cant-miss" target ="_blank"><button class="uppercase">Mediterranien</button></a>
+        <a href="https://www.virginholidays.co.uk/destinations/caribbean-holidays" target= "_blank"><button class="uppercase">Caribbean</button></a>
+        <a href="https://www.europeanbestdestinations.com/destinations/" target="_blank"><button class ="uppercase">Europe</button></a>
         <p class="wish">Choose one of our Recommended Destinations</p>
         <div id="data"></div>
   </header>
   <div id="map"></div>
   <section class="container-fluid">
-  <script>
+    <script>
       var map;
       var service;
-      
-      function handleSearchResults(results, status)
-{   
-  if(status == google.maps.places.PlacesServiceStatus.ok)
-  {
-  for (var i = 0; i < results.legnth; i++)
-  { console.log(results(i));
-  
- var place = results(i);
- position: results(i);
- createMarker(results(i));
- }
- }
-}
 
-function performSearch()
-{
-var request = {
-bounds:map.getBounds(),
-name:"Restaurants"
-};
-service.nearbySearch(request, handleSearchResults);
-}
-function initMap() {
-  map = new google.maps.Map(document.getElementById("map"), {
-          zoom: 8,
+      function handleSearchResults(results, status) {
+        if (status == google.maps.places.PlacesServiceStatus.ok) {
+          for (var i = 0; i < results.legnth; i++) {
+            /*console.log(results(i));*/
+
+            var place = results(i);
+            position: results(i);
+            map: createMarker(results(i));
+          }
+        }
+      }
+
+      function performSearch() {
+        var request = {
+          bounds: map.getBounds(),
+          name: "Hotels"
+        };
+        service.nearbySearch(request, handleSearchResults);
+      }
+
+      function initMap() {
+        map = new google.maps.Map(document.getElementById("map"), {
+          zoom: 3,
           center: {
-            lat: 47.846344,
-            lng: 7.119141
+            lat: 37.983810,
+            lng: 23.727539
           }
 
         });
         var labels = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         var locations = [
           { lat: 37.688167, lng: 23.466797 },
-          { lat: 19.440694, lng:-73.212891 },
-          { lat: 47.846344, lng: 7.119141 }
+          { lat: 19.440694, lng: -73.212891 },
+          { lat: 47.846344, lng: 7.119141 },
+          { lat: 22.665977, lng: -82.245074 },
+          { lat: 52.520008, lng: 13.404954 },
+          { lat: 37.983810, lng: 23.727539 },
+          { lat: 48.856613, lng: 2.352222 },
+          { lat: 13.096851, lng: -59.614483 },
+          { lat: 35.185566, lng: 33.382275 },
+          { lat: 18.735693, lng: -70.162651 }
+
         ];
 
         var markers = locations.map(function(location, i) {
@@ -76,34 +82,32 @@ function initMap() {
 
           });
         });
- var markerCluster = new MarkerClusterer(map, markers, { imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js' });
-    
-  service = new google.maps.places.PlacesService(map);
-  
-  google.maps.event.addListenerOnce(map,"bounds_changed", performSearch);
-     
+        var markerCluster = new MarkerClusterer(map, markers, { imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js' });
+
+        service = new google.maps.places.PlacesService(map);
+
+        google.maps.event.addListenerOnce(map, "bounds_changed", performSearch);
+
       }
 
       $(document).ready(function() {
 
         navigator.geoLocation.locations();
 
-});
-   
+      });
     </script>
-     
+
   </section>
 
 </html>
 
-<footer class="container-fluid no gutter">
+<footer class="container-fluid">
   <div id="footer-details " class="row">
     <div class="col-sm-4 ">
       <h5 class="uppercase ">Follow Us</h5>
       <ul class="list-inline social-links ">
         <li><a target="_blank " href="# "><i class="fa fa-facebook "></i></a></li>
         <li><a target="_blank " href="# "><i class="fa fa-twitter "></i></a></li>
-        <li><a target="_blank " href="# "><i class="fa fa-linkedin "></i></a></li>
         <li><a target="_blank " href="# "><i class="fa fa-pinterest "></i></a></li>
         <li><a target="_blank " href="# "><i class="fa fa-instagram "></i></a></li>
         <li><a target="_blank " href="# "><i class="fa fa-youtube "></i></a></li>
@@ -113,7 +117,7 @@ function initMap() {
 </footer>
 <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDHHyac2SiOYPNYxXMK7rqJjnB8nCaaxE&callback=initMap" async defer></script>
-<script type="text/javascript" src=”https://maps.googleapis.com/maps/api/js?&libraries=places,weather&sensonsor=false”></script>
+<script type="text/javascript" src=”https://maps.googleapis.com/maps/api/js?&libraries=places,weather,sensonsor=false”></script>
 <script type="text/javascript" src="js/maps.js"></script>
 
 </body>
