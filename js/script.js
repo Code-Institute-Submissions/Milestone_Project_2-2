@@ -1,7 +1,5 @@
 $(document).ready(function() {
     
-    $(document).ready(function() {
-
  	$("button").on("click", function() {
  		$("mediterranien").removeId('map');
 		$("carribean").removeId('map');
@@ -44,4 +42,3 @@ $("button").mouseover(function() {
 		$("europe").addId("map");
 	});
 $("button").mouseover("color","red");
-}); 
