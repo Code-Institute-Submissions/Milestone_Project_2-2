@@ -9,116 +9,49 @@
   <link rel="stylesheet" href="css/style.css" type="text/css" />
   <meta charset="UTF-8">
   <meta name="viewport" content="initial-scale=1.0">
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDHHyac2SiOYPNYxXMK7rqJjnB8nCaaxE&callback=initMap&libraries=places,weather&sensor=false" defer></script>
+  <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
+  <script src="js/maps.js"></script>
   <title>Project_MS_2</title>
 </head>
+
 <body>
   <header>
     <div class="row">
-      <div class="col-md-12 logo"></div>
+      <div class="col-md-12 logo">
+        <div class="row bg-color-name-title destinations">
+          <div class="center inline-block">
+            <h1 class = "uppercase">Looking for a Break?</h1>
+            <h2>Choose Destination</h2>
+            <btn class="uppercase" href="https://www.google.com/maps/place/Mediterranean+Sea/@36.654159,-2.9689769,4z/data=!3m1!4b1!4m5!3m4!1s0x131421b81c473c9f:0x2e93598afeccf840!8m2!3d34.5531284!4d18.0480105" target="_blank">Mediterranean</btn>
+            <btn class="uppercase" href="https://www.google.com/maps/place/Caribbean/@18.4334647,-81.3347104,5z/data=!3m1!4b1!4m5!3m4!1s0x8eb9e309d5a038b7:0xc67ecf32cac5dbdc!8m2!3d21.4691137!4d-78.6568942" target="_blank">Caribbean</btn>
+            <btn class="uppercase" href="https://www.google.com/maps/place/Europe/@43.7256923,-13.0368922,3z/data=!4m5!3m4!1s0x46ed8886cfadda85:0x72ef99e6b3fcf079!8m2!3d54.5259614!4d15.2551187">Europe<btn>
+        </div>
+        </div>
     </div>
-    <div class="row bg-color-name-title destinations">
-      <h3>Looking for a Break?</h3>
-      <div class="col-md-12">
-        <a href="https://www.skyscanner.net/news/10-mediterranean-destinations-you-cant-miss" target ="_blank"><button class="uppercase">Mediterranien</button></a>
-        <a href="https://www.virginholidays.co.uk/destinations/caribbean-holidays" target= "_blank"><button class="uppercase">Caribbean</button></a>
-        <a href="https://www.europeanbestdestinations.com/destinations/" target="_blank"><button class ="uppercase">Europe</button></a>
-        <p class="wish">Choose one of our Recommended Destinations</p>
-        <div id="data"></div>
+    </div>
   </header>
   <div id="map"></div>
-  <section class="container-fluid">
-    <script>
-      var map;
-      var service;
-
-      function handleSearchResults(results, status) {
-        if (status == google.maps.places.PlacesServiceStatus.ok) {
-          for (var i = 0; i < results.legnth; i++) {
-            /*console.log(results(i));*/
-
-            var place = results(i);
-            position: results(i);
-            map: createMarker(results(i));
-          }
-        }
-      }
-
-      function performSearch() {
-        var request = {
-          bounds: map.getBounds(),
-          name: "Hotels"
-        };
-        service.nearbySearch(request, handleSearchResults);
-      }
-
-      function initMap() {
-        map = new google.maps.Map(document.getElementById("map"), {
-          zoom: 3,
-          center: {
-            lat: 37.983810,
-            lng: 23.727539
-          }
-
-        });
-        var labels = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        var locations = [
-          { lat: 37.688167, lng: 23.466797 },
-          { lat: 19.440694, lng: -73.212891 },
-          { lat: 47.846344, lng: 7.119141 },
-          { lat: 22.665977, lng: -82.245074 },
-          { lat: 52.520008, lng: 13.404954 },
-          { lat: 37.983810, lng: 23.727539 },
-          { lat: 48.856613, lng: 2.352222 },
-          { lat: 13.096851, lng: -59.614483 },
-          { lat: 35.185566, lng: 33.382275 },
-          { lat: 18.735693, lng: -70.162651 }
-
-        ];
-
-        var markers = locations.map(function(location, i) {
-          return new google.maps.Marker({
-            position: location,
-            label: labels[i % labels.length],
-
-          });
-        });
-        var markerCluster = new MarkerClusterer(map, markers, { imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js' });
-
-        service = new google.maps.places.PlacesService(map);
-
-        google.maps.event.addListenerOnce(map, "bounds_changed", performSearch);
-
-      }
-
-      $(document).ready(function() {
-
-        navigator.geoLocation.locations();
-
-      });
-    </script>
-
-  </section>
-
-</html>
-
-<footer class="container-fluid">
-  <div id="footer-details " class="row">
-    <div class="col-sm-4 ">
-      <h5 class="uppercase ">Follow Us</h5>
-      <ul class="list-inline social-links ">
-        <li><a target="_blank " href="# "><i class="fa fa-facebook "></i></a></li>
-        <li><a target="_blank " href="# "><i class="fa fa-twitter "></i></a></li>
-        <li><a target="_blank " href="# "><i class="fa fa-pinterest "></i></a></li>
-        <li><a target="_blank " href="# "><i class="fa fa-instagram "></i></a></li>
-        <li><a target="_blank " href="# "><i class="fa fa-youtube "></i></a></li>
-      </ul>
+  <section class ="inline-block">
+          <btn id=“ refresh”>Refresh</btn>
+            <btn id=”toggle_traffic”>Traffic</btn>
+            <btn id=”toggle _weather”>Weather<btn>
+          </section>
+  <footer>
+    <div class="row footer-details" >
+      <div class="col-sm-4 ">
+        <h5 class="uppercase">Follow Us</h5>
+        <ul class="list-inline social-links ">
+          <li><a target="_blank " href="# "><i class="fa fa-facebook "></i></a></li>
+          <li><a target="_blank " href="# "><i class="fa fa-twitter "></i></a></li>
+          <li><a target="_blank " href="# "><i class="fa fa-pinterest "></i></a></li>
+          <li><a target="_blank " href="# "><i class="fa fa-instagram "></i></a></li>
+          <li><a target="_blank " href="# "><i class="fa fa-youtube "></i></a></li>
+        </ul>
+      </div>
     </div>
-  </div>
-</footer>
-<script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDHHyac2SiOYPNYxXMK7rqJjnB8nCaaxE&callback=initMap" async defer></script>
-<script type="text/javascript" src=”https://maps.googleapis.com/maps/api/js?&libraries=places,weather,sensonsor=false”></script>
-<script type="text/javascript" src="js/maps.js"></script>
+    
+  </footer>
 
 </body>
 
