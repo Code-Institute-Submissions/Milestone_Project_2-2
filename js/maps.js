@@ -1,4 +1,4 @@
-
+/* ----------This code is a combination of Google maps API example codes which i have modfied to the best of my abilit to suit my project needs*/
  var map;
  var service;
 
@@ -8,30 +8,33 @@
     console.log(results[i]);
 
     var place = results[i];
-    position: results[i];
-    map: (results[i]);
+    position: results[i].geometry.location;
+    map: map;
+    icon: rsults[i].icon
    }
   }
  }
 
  function performSearch() {
   var request = {
-   bounds: map.getBounds(),
-   name: "Hotels"
+   bound: map.getBounds(),
+   name: "Recreation"
   };
-  service.nearbySearch(request, handleSearchResults);
+  services.nearbySearch(request, handleSearchResults);
  }
 
  function initMap() {
   map = new google.maps.Map(document.getElementById("map"), {
    zoom: 4,
    center: {
-    lat: 55.3781,
-    lng: -3.436
+    lat: 35.746512,
+    lng: -39.462891 
    }
+   
   });
-  
-  var labels = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+   var trafficLayer = new google.maps.TrafficLayer();
+             trafficLayer.setMap(map);
+    var labels = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   var locations = [
    { lat: 37.688167, lng: 23.466797 },
    { lat: 19.440694, lng: -73.212891 },
@@ -52,29 +55,31 @@
    });
   });
   var markerCluster = new MarkerClusterer(map, markers, { imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js' });
- }
+ 
+ 
+ services = new google.maps.places.PlacesService(map);
 
-service = new google.maps.places.PlacesService(map);
  google.maps.event.addListenerOnce(map, "bounds_changed", performSearch);
 
- $(document).ready(function() {
+ $("#refresh").click(getBounds);
+}
 
+ $(document).ready(function() 
+ {
   navigator.geolocation.getLocations( );
 
  });
 
-        var input = document.getElementById('pac-input');
+      var input = document.getElementById('pac-input');
         var searchBox = new google.maps.places.SearchBox(input);
         map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 
-        // Bias the SearchBox results towards current map's viewport.
-        map.addListener('bounds_changed', function() {
+           map.addListener('bounds_changed', function() {
           searchBox.setBounds(map.getBounds());
         });
 
         var markers = [];
-        // Listen for the event fired when the user selects a prediction and retrieve
-        // more details for that place.
+        
         searchBox.addListener('places_changed', function() {
           var places = searchBox.getPlaces();
 
@@ -82,13 +87,12 @@ service = new google.maps.places.PlacesService(map);
             return;
           }
 
-          // Clear out the old markers.
           markers.forEach(function(marker) {
-            marker.setMap(null);
+          marker.setMap(null);
           });
           markers = [];
 
-          // For each place, get the icon, name and location.
+         
           var bounds = new google.maps.LatLngBounds();
           places.forEach(function(place) {
             if (!place.geometry) {
@@ -103,7 +107,7 @@ service = new google.maps.places.PlacesService(map);
               scaledSize: new google.maps.Size(25, 25)
             };
 
-            // Create a marker for each place.
+            
             markers.push(new google.maps.Marker({
               map: map,
               icon: icon,
@@ -112,7 +116,7 @@ service = new google.maps.places.PlacesService(map);
             }));
 
             if (place.geometry.viewport) {
-              // Only geocodes have viewport.
+             
               bounds.union(place.geometry.viewport);
             } else {
               bounds.extend(place.geometry.location);

@@ -9,16 +9,15 @@ body {
 h1, h2, h3, h4, h5, h6
 h{
     font-family: 'Roboto', sans-serif;
-    text-align: center;
     margin-top: 10px;
     text-transform: uppercase;
-    color:#62fbd8;
+    color:#5eacef;
     }
 
 .destinations {
     text-align: center;
     min-height: 0px;
-    font-size: large;
+    font-size: medium;
     font-family: 'Roboto', sans-serif;
     font-weight: bold;
     padding: 0;
@@ -97,6 +96,7 @@ button {
 .row {
     margin: 0px;
 
+
 }
 
 .social-links {
@@ -120,9 +120,13 @@ button {
     -o-transition: all 0.35s ease-in-out;
 }
 
+a {
+    color:#fcf8e3;
+    
+}
 li a i:hover {
     background: #e84610;
-    color: #95f3f3;
+    color: #f7e791;
 }
 
 .hvr-sweep-to-bottom {
@@ -141,7 +145,7 @@ li a i:hover {
 
 
 
-@media (min-width: 768px) {
+      @media (min-width: 768px) {
     .column {
         background-color: #e84610;
     }
@@ -155,75 +159,4 @@ li a i:hover {
     }
 }
 
-/*--------------------------------------------------------*/
-#description {
-        font-family: Roboto;
-        font-size: 15px;
-        font-weight: 300;
-      }
-
-      #infowindow-content .title {
-        font-weight: bold;
-      }
-
-      #infowindow-content {
-        display: none;
-      }
-
-      #map #infowindow-content {
-        display: inline;
-      }
-
-      .pac-card {
-        margin: 10px 10px 0 0;
-        border-radius: 2px 0 0 2px;
-        box-sizing: border-box;
-        -moz-box-sizing: border-box;
-        outline: none;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-        background-color: #fff;
-        font-family: Roboto;
-      }
-
-      #pac-container {
-        padding-bottom: 12px;
-        margin-right: 12px;
-      }
-
-      .pac-controls {
-        display: inline-block;
-        padding: 5px 11px;
-      }
-
-      .pac-controls label {
-        font-family: Roboto;
-        font-size: 13px;
-        font-weight: 300;
-      }
-
-      #pac-input {
-        background-color: #fff;
-        font-family: Roboto;
-        font-size: 15px;
-        font-weight: 300;
-        margin-left: 12px;
-        padding: 0 11px 0 13px;
-        text-overflow: ellipsis;
-        width: 400px;
-      }
-
-      #pac-input:focus {
-        border-color: #4d90fe;
-      }
-
-      #title {
-        color: #fff;
-        background-color: #4d90fe;
-        font-size: 25px;
-        font-weight: 500;
-        padding: 6px 12px;
-      }
-      #target {
-        width: 345px;
-      }
     
