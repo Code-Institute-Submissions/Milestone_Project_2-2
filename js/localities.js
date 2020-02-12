@@ -1,12 +1,11 @@
-/*var map;
-function initAutocomplete(){
+function initMap(){
 let location = new Object();
 navigator.geolocation.getCurrentPosition(function(pos){
 location.lat = pos.coords.latitude;
 location.long = pos.coords.longitude;
-map = new google.maps.Map(document.getElementById("map"),{
-    center: {lat:  35.746512,lng:-39.462891},
-    zoom: 15
+map = new google.maps.Map(document.getElementById("map-info"),{
+    center: {lat:35.746512,lng:-39.462891},
+    zoom: 4
 });
 getRestaurants(location);
     });
@@ -16,7 +15,7 @@ function getRestaurants (location) {
     var searchBox = new google.maps.LatLng(location.lat,location.long);
     var request = {
         location: searchBox,
-        radius: '5000',
+        radius: '1500',
         type: ['restaurant']
     };
    var service = new google.maps.places.PlacesService(map);

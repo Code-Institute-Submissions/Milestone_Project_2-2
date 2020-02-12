@@ -1,12 +1,12 @@
 function initAutocomplete() {
-      var map = new google.maps.Map(document.getElementById('map'), {
+       map = new google.maps.Map(document.getElementById("map"), {
          center: {lat:35.746512, lng: -39.462891},
-          zoom: 13,
+          zoom: 4,
           mapTypeId: 'roadmap'
         });
         var trafficLayer = new google.maps.TrafficLayer();
  trafficLayer.setMap(map);
-     var input = document.getElementById('pac-input');
+         var input = document.getElementById('pac-input');
         var searchBox = new google.maps.places.SearchBox(input);
         map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
          map.addListener('bounds_changed', function() {
@@ -15,8 +15,8 @@ function initAutocomplete() {
        var markers = [];
         searchBox.addListener('places_changed', function() {
           var places = searchBox.getPlaces();
-
-          if (places.length == 0) {
+                
+    if (places.length == 0) {
             return;
           }
           markers.forEach(function(marker) {
@@ -51,6 +51,6 @@ function initAutocomplete() {
             }
           });
           map.fitBounds(bounds);
-                  });
+            });
       }
-  
+      

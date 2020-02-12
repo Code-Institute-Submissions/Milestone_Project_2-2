@@ -36,6 +36,11 @@ h2, h {
     background-size: cover;
 }
 
+#map-info, data {
+    height: 70%;
+    background-size: cover;
+}
+
 .uppercase {
     text-transform: uppercase;
     background: no-repeat;

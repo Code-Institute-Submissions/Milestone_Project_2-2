@@ -1,19 +1,19 @@
-$(document).ready(function() {
+$(document).ready(function(){
     
- 	$("button").on("click", function() {
+ 	$("button").on("click", function(){
  		$("mediterranien").removeId('map');
 		$("carribean").removeId('map');
 		$("europe").removeId('map');
 		$("mediterranien").addId("data");
 		
 	  	});
-	$("button").on("click", function() {
+	$("button").on("click", function(){
 		$("mediterranien").removeId('map');
 		$("carribean").removeId('map');
 		$("europe").removeId('map');
 		$("carribean").addId("data");
 	});
-	$("button").on("click", function() {
+	$("button").on("click", function(){
 		$("mediterranien").removeId('map');
 		$("carribean").removeId('map');
 		$("europe").removeId('map');
@@ -22,23 +22,23 @@ $(document).ready(function() {
 	$("button").click("color","red");
 }); 
 
-$("button").mouseover(function() {
+$("button").mouseover(function(){
  		$("mediterranien").removeId('data');
 		$("carribean").removeId('data');
 		$("europe").removeId('data');
-		$("mediterranien").addId("map");
+		$("mediterranien").addId('map');
 		
 	  	});
-	$("button").mouseleave(function() {
+	$("button").mouseleave(function(){
 		$("mediterranien").removeId('data');
 		$("carribean").removeId('data');
 		$("europe").removeId('data');
-		$("carribean").addId("map");
+		$("carribean").addId('map');
 	});
-	$("button").mouseleave(function() {
+	$("button").mouseleave(function(){
 		$("mediterranien").removeId('data');
 		$("carribean").removeId('data');
 		$("europe").removeId('data');
-		$("europe").addId("map");
+		$("europe").addId('map');
 	});
 $("button").mouseover("color","red");

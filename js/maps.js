@@ -1,10 +1,8 @@
 /* ----------This code is a combination of Google maps API example codes which i have modfied to the best of my abilit to suit my project needs*/
-/*var map;
-var service;
-var infowindow;
+var map;
 function initMap() {
-    var options = new google.maps.LatLng(37.688167,  23.466797)
- map = new google.maps.Map(document.getElementById("map"), {
+var options = new google.maps.LatLng(37.688167,  23.466797)
+    map = new google.maps.Map(document.getElementById('map-info'), {
   zoom: 4,
   center: {
    lat: 35.746512,
@@ -13,7 +11,7 @@ function initMap() {
   mapTypeId: 'roadmap'
   
  });
-  var trafficLayer = new google.maps.TrafficLayer();
+var trafficLayer = new google.maps.TrafficLayer();
  trafficLayer.setMap(map);
   
  var labels = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -39,53 +37,4 @@ function initMap() {
   });
   var markerCluster = new MarkerClusterer(map, markers, { imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js' });
 }
- var request = options
-    radius: '1500',
-    type ['restaurant']
-
-  service = new google.maps.places.PlacesService(map);
-  service.nearbySearch(request, callback);
-
-function callback(results, status) {
-    if (status == google.maps.places.PlacesServiceStatus.OK) {
-        for(var i = 0; i < results.length; i++) {
-        console.log (results)
-            var place = results[i];
-            let price = createPrice(place.price_level);
-        let content = `<h3>${place.name}</h3>
-        <h4>${place.vicinity}</h4>
-        <p>Price:${price}<br/>
-        Rating: ${place.rating}`;
-
-        var marker = new google.maps.Marker({
-            position: place.geometry.location,
-            map: map,
-            title: place.name,
-            });
-        var infowindow = new google.maps.InfoWindow({
-            content: content
-        });
-        bindInfoWindow(marker, map, infowindow, content);
-        marker.setMap(map)
-
-        };
-    };
-};
-function bindInfoWindow(marker, map, infowindow, html) {
-   marker.addListener('click', function() {
-       infowindow.setContent(html);
-       infowindow.open(map, this);
-   }); 
-};
-function createPrice(level) {
-    if(level != "" && level !=null) {
-        let out = "";
-        for (var x = 0; x < level; x++) {
-            out += "$";
-        };
-        return out;
-    } else {
-        return "?";
-    };
-};
-
+ 
