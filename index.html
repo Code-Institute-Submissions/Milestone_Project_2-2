@@ -1,62 +1,55 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css" />
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css" />
-  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.1.1/css/hover-min.css" type="text/css" />
-  <link rel="stylesheet" href="css/style.css" type="text/css" />
-  <meta charset="UTF-8">
-  <meta name="viewport" content="initial-scale=1.0">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
  <script  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDHHyac2SiOYPNYxXMK7rqJjnB8nCaaxE&callback=initAutocomplete&initMap&libraries=places" defer></script>
   <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
-  <script src="js/map-information.js"></script>
-  <script src="js/script.js"></script>
-  <script src="js/maps.js"></script>
-  <script src="js/search.js"></script>
-  <script src="js/localities.js"></script>
-  <title>Project_MS_2</title>
+    <title>Document</title>
 </head>
-
 <body>
+<div class="container">
+<div class="card-block" id="formatted-address"></div> 
+<div class="card-block" id="address-components"></div>
+ </div>   
+     <script>       
+     geocode();
+     function geocode() {
+         var location = 'London Eye';
+         axios.get('https://maps.googleapis.com/maps/api/geocode/json?',{
+             params: {
+             address: location,
+             key:'AIzaSyDDHHyac2SiOYPNYxXMK7rqJjnB8nCaaxE'
+             }
+         })
+         .then(function(response){
+             console.log(response);
 
-  <header class="container-fluid">
-    <div class="row">
-      <div class="col-md-4 logo">
-         <div class="center inline-block">
-            <h1 class="uppercase">Looking for a Break?</h1>
-            <h2>Choose A Destination</h2>
-           <button class="uppercase inline-block"> Mediterranean</button>
-           <button class="uppercase inline-block">Caribbean</button>
-          <button class="uppercase inline-block">Europe</button>
-             </div>
-      </div>
-<div class="col-md-8 inline">
-     <div id='map-info'><h2>Hello</h2></div>
-      <div id="data"><h3>Hello</h3></div>
-         </div>
-    </div>
- 
-  </header>
-<input id="pac-input" class="controls" type="text" oninput ="fetchSearchBoxData()" placeholder="Search Box">
- <div id ="map"></div>
-  <footer>
-    <div class="row footer-details">
-      <div class="col-sm-4">
-        <h5 class="uppercase">Follow Us</h5>
-        <ul class="list-inline social-links">
-          <li><a target="_blank " href="# "><i class="fa fa-facebook "></i></a></li>
-          <li><a target="_blank " href="# "><i class="fa fa-twitter "></i></a></li>
-          <li><a target="_blank " href="# "><i class="fa fa-pinterest "></i></a></li>
-          <li><a target="_blank " href="# "><i class="fa fa-instagram "></i></a></li>
-          <li><a target="_blank " href="# "><i class="fa fa-youtube "></i></a></li>
-        </ul>
-      </div>
-    </div>
+            var formattedAddress = response.data.results[0].formatted_address;
+        var formattedAddressOutput =`
+        <ul class="list-group">
+        <li class="lsit-group-item">${formattedAddress}</li>
+        </ul>`;
 
-  </footer>
+var addressComponents = response.data.results[0].address_components;
+var addressComponentsOutput ='<ul class="list-group">';
+for(var i=0;i < addressComponents.length; i++) {
+    addressComponentsOutput +=`
+    <li class="list-group-item"><strong>${addressComponents[i].types[0]}</strong>: ${addressComponents[i].long_name}</li>
+    `;
+     }
+     addressComponentsOutput += '</ul>';
+        
+        document.getElementById("formatted-address").innerHTML = formattedAddressOutput;
+        document.getElementById("address-components").innerHTML = addressComponentsOutput;
+         })
+         .catch(function(error){
+             console.log(eror);
+         });
+     }
+    </script>       
 </body>
-
 </html>

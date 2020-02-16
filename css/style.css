@@ -23,6 +23,7 @@ h2, h {
     background-repeat: no-repeat;
     background-size: cover;
     min-height: 180px;
+    display: flex;
     transition: all .5s ease-in-out;
     -moz-transition: all .5s ease-in-out;
     -webkit-transition: all .5s ease-in-out;
@@ -55,7 +56,6 @@ h2, h {
     padding: 0;
 
 }
-
 
 .col-sm-4 {
     position: relative;

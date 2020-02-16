@@ -4,8 +4,15 @@ function initAutocomplete() {
           zoom: 4,
           mapTypeId: 'roadmap'
         });
+google.maps.event.addListener(map, 'click', function(event) {
+addMarker({coords:event.LatLngBounds})
+});
+        /*------------Traffic--------------------------------*/
         var trafficLayer = new google.maps.TrafficLayer();
  trafficLayer.setMap(map);
+
+ /*---------------------searchBox---------------*/
+ 
          var input = document.getElementById('pac-input');
         var searchBox = new google.maps.places.SearchBox(input);
         map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
@@ -42,15 +49,15 @@ function initAutocomplete() {
               title: place.name,
               position: place.geometry.location
             }));
-
-            if (place.geometry.viewport) {
-        
-              bounds.union(place.geometry.viewport);
+              
+    if (place.geometry.viewport) {
+            bounds.union(place.geometry.viewport);
             } else {
               bounds.extend(place.geometry.location);
             }
           });
           map.fitBounds(bounds);
-            });
-      }
-      
+        });
+    }
+
+ 
