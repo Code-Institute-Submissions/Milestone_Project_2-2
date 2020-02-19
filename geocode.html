@@ -33,31 +33,10 @@
           <button class="uppercase inline-block">Europe</button>
              </div>
       </div>
-
 <div class="col-md-8 inline">
      <div id='map-info'>
      <script> 
-     
-     geocode();
-     function geocode() {
-
-         var location = 'Kaiser Wilhem Strasse 23';
-         axios.get('https://maps.googleapis.com/maps/api/place/details/json?',{
-             params: {
-             address: location,
-             key:'AIzaSyDDHHyac2SiOYPNYxXMK7rqJjnB8nCaaxE'
-
-             }
-         })
-         .then(function(response){
-             console.log(response);
-         })
-         .catch(function(error){
-             console.log(eror);
-         });
-     }
-         </script>       
-         </div>
+           </div>
       <div id="data"></div>
          </div>
     </div>
