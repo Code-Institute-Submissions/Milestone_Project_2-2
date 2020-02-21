@@ -1,50 +1,56 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css" />
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css" />
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css" />
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css" />
   <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.1.1/css/hover-min.css" type="text/css" />
   <link rel="stylesheet" href="css/style.css" type="text/css" />
-  <meta charset="UTF-8">
-  <meta name="viewport" content="initial-scale=1.0">
- <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
  <script  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDHHyac2SiOYPNYxXMK7rqJjnB8nCaaxE&callback=initAutocomplete&initMap&libraries=places" defer></script>
   <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
-  <script src="js/map-information.js"></script>
-  <script src="js/script.js"></script>
-  <script src="js/maps.js"></script>
-  <script src="js/search.js"></script>
-  <script src="js/localities.js"></script>
-  <title>Project_MS_2</title>
+   <script src="js/search.js"></script> 
+   <script src="js/geocode.js"></script> 
+
+        <title>MS_2</title>
 </head>
-
 <body>
-
-  <header class="container-fluid">
-    <div class="row">
+<header class="container-fluid">
+<div class="row">
       <div class="col-md-4 logo">
          <div class="center inline-block">
             <h1 class="uppercase">Looking for a Break?</h1>
-            <h2>Choose A Destination</h2>
-           <button class="uppercase inline-block"> Mediterranean</button>
-           <button class="uppercase inline-block">Caribbean</button>
-          <button class="uppercase inline-block">Europe</button>
+            <h2>Search A Destination</h2>
+          <button class="btn btn-secondary">Go To Travel Agent</button>
              </div>
       </div>
-<div class="col-md-8 inline">
-     <div id='map-info'>
-     <script> 
-           </div>
-      <div id="data"></div>
-         </div>
-    </div>
-   
-  </header>
-<input id="pac-input" class="controls" type="text" oninput ="fetchGoogleMapsInformation()" placeholder="Search_Box">
+      <div class="col-md-8">
+<h2 id="text-center">Enter Location: </h2>
+<form id= "location-form"> 
+<input type="text" id="location-input" class="form-control form-control-lg">
+<br>
+<button type="submit" class= "btn btn-primary btn-block">Submit</button>
+<form>        
+<div class="container">
+<div class="card-block" id="formatted-address"></div> 
+<div class="card-block" id="address-components"></div>
+<div class="card-block" id="geometry"></div>
+</div>  
+</div> 
+</header>
+<section>
+<div class="row">
+      <div class="col-md-4">
+<div class = "photo"></div>
+      </div>
+      </div>
+</section>
+<input id="pac-input" class="controls" type="text" placeholder="Search_Box">
  <div id ="map"></div>
-  <footer>
+ <footer>
     <div class="row footer-details">
       <div class="col-sm-4">
         <h5 class="uppercase">Follow Us</h5>
@@ -57,8 +63,57 @@
         </ul>
       </div>
     </div>
-
   </footer>
-</body>
+<script>
+var locationForm = document.getElementById('location-form');
+locationForm.addEventListener("submit", geocode);
+function geocode(e){
+   e.preventDefault();
+         var location = document.getElementById('location-input').value;
+         axios.get('https://maps.googleapis.com/maps/api/geocode/json?',{
+             params: {
+             address: location,
+             key:'AIzaSyDDHHyac2SiOYPNYxXMK7rqJjnB8nCaaxE'
+             }
+         })
+         .then(function(response){
+             console.log(response);
 
+            var formattedAddress = response.data.results[0].formatted_address;
+        var formattedAddressOutput =`
+        <ul class="list-group">
+        <li class="lsit-group-item">${formattedAddress}</li>
+        </ul>`;
+
+var addressComponents = response.data.results[0].address_components;
+var addressComponentsOutput ='<ul class="list-group">';
+for(var i=0;i < addressComponents.length; i++) {
+    addressComponentsOutput +=`
+    <li class="list-group-item"><strong>${addressComponents[i].types[0]}</strong>: ${addressComponents[i].long_name}</li>
+    `;
+     }
+     addressComponentsOutput += '</ul>';
+
+        var lat = response.data.results[0].geometry.location.lat;
+        var lng = response.data.results[0].geometry.location.lng;
+        var geometryOutput =`
+        <ul class="list-group">
+        <li class="lsit-group-item"><strong>Latitude</strong>: ${lat}</li>
+        </ul>;
+        <li class="lsit-group-item"><strong>Longitude</strong>: ${lng}</li>
+        </ul>`;
+        
+        document.getElementById("formatted-address").innerHTML = formattedAddressOutput;
+        document.getElementById("address-components").innerHTML = addressComponentsOutput;
+        document.getElementById("geometry").innerHTML = geometryOutput;
+        
+        })
+         .catch(function(error){
+             console.log(eror);
+         });
+         
+     }
+</script>  
+
+</body>
 </html>

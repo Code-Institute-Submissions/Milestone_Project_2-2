@@ -1,8 +1,7 @@
 /* ----------This code is a combination of Google maps API example codes which i have modfied to the best of my abilit to suit my project needs*/
 var map;
 function initMap() {
-var options = new google.maps.LatLng(37.688167,  23.466797)
-    map = new google.maps.Map(document.getElementById('map'), {
+ map = new google.maps.Map(document.getElementById('map'), {
   zoom: 4,
   center: {
    lat: 35.746512,

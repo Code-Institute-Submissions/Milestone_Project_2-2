@@ -35,6 +35,7 @@ h2, h {
 #map {
     height: 70%;
     background-size: cover;
+    display: flex;
 }
 
 #map-info, data {

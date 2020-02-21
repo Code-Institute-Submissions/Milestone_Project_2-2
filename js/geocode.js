@@ -1,10 +1,12 @@
+/*var locationForm = document.getElementById('location-form');   
+locationForm.addEventListener("submit", geocode);  
 function geocode(e){
    e.preventDefault();
          var location = document.getElementById('location-input').value;
          axios.get('https://maps.googleapis.com/maps/api/geocode/json?',{
              params: {
              address: location,
-            key:'AIzaSyDDHHyac2SiOYPNYxXMK7rqJjnB8nCaaxE'
+             key:'AIzaSyDDHHyac2SiOYPNYxXMK7rqJjnB8nCaaxE'
              }
          })
          .then(function(response){
@@ -33,7 +35,6 @@ for(var i=0;i < addressComponents.length; i++) {
         </ul>;
         <li class="lsit-group-item"><strong>Longitude</strong>: ${lng}</li>
         </ul>`;
-        
         document.getElementById("formatted-address").innerHTML = formattedAddressOutput;
         document.getElementById("address-components").innerHTML = addressComponentsOutput;
         document.getElementById("geometry").innerHTML = geometryOutput;
@@ -42,6 +43,5 @@ for(var i=0;i < addressComponents.length; i++) {
          .catch(function(error){
              console.log(eror);
          });
-         var locationForm = document.getElementById('location-form');
-         locationForm.addEventListener("submit", geocode);
+       
      }

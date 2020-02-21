@@ -12,10 +12,10 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
  <script  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDHHyac2SiOYPNYxXMK7rqJjnB8nCaaxE&callback=initAutocomplete&initMap&libraries=places" defer></script>
   <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
-   <script src="js/search.js"></script> 
-   <script src="js/geocode.js"></script> 
+   <script src="js/search.js"></script>
+   <script src="js/geocode.js"></script>
 
-        <title>MS_2</title>
+           <title>MS_2</title>
 </head>
 <body>
 <header class="container-fluid">
@@ -33,15 +33,16 @@
 <input type="text" id="location-input" class="form-control form-control-lg">
 <br>
 <button type="submit" class= "btn btn-primary btn-block">Submit</button>
-<form>        
+</form>        
 <div class="container">
 <div class="card-block" id="formatted-address"></div> 
 <div class="card-block" id="address-components"></div>
 <div class="card-block" id="geometry"></div>
 </div>  
 </div> 
+</div>
 </header>
-<section>
+<section class ="infowindow-content">
 <div class="row">
       <div class="col-md-4">
 <div class = "photo"></div>
@@ -64,9 +65,9 @@
       </div>
     </div>
   </footer>
-<script>
-var locationForm = document.getElementById('location-form');
-locationForm.addEventListener("submit", geocode);
+  <script>
+  var locationForm = document.getElementById('location-form');   
+locationForm.addEventListener("submit", geocode);  
 function geocode(e){
    e.preventDefault();
          var location = document.getElementById('location-input').value;
@@ -102,7 +103,6 @@ for(var i=0;i < addressComponents.length; i++) {
         </ul>;
         <li class="lsit-group-item"><strong>Longitude</strong>: ${lng}</li>
         </ul>`;
-        
         document.getElementById("formatted-address").innerHTML = formattedAddressOutput;
         document.getElementById("address-components").innerHTML = addressComponentsOutput;
         document.getElementById("geometry").innerHTML = geometryOutput;
@@ -111,9 +111,8 @@ for(var i=0;i < addressComponents.length; i++) {
          .catch(function(error){
              console.log(eror);
          });
-         
+       
      }
-</script>  
-
+  </script>
 </body>
 </html>
