@@ -10,31 +10,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
- <script  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDHHyac2SiOYPNYxXMK7rqJjnB8nCaaxE&callback=initAutocomplete&initMap&libraries=places" defer></script>
-  <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
-   <script src="js/search.js"></script>
-   <script src="js/geocode.js"></script>
 
            <title>MS_2</title>
 </head>
 <body>
 <header class="container-fluid">
 <div class="row">
-      <div class="col-md-4 logo">
+      <div class="col-md-6 logo">
          <div class="center inline-block">
             <h1 class="uppercase">Looking for a Break?</h1>
             <h2>Search A Destination</h2>
-          <button class="btn btn-secondary">Go To Travel Agent</button>
+          <input type ="button" value="Mediterranean" id="button-med"/>
+          <input type ="button" value="Carribean" id="button-car"/>
+          <input type ="button" value="Europe" id="button-eu"/>
              </div>
       </div>
-      <div class="col-md-8">
+      <div class="container col-md-6">
 <h2 id="text-center">Get Location Address: </h2>
 <form id= "location-form"> 
 <input type="text" id="location-input" class="form-control form-control-lg">
 <br>
 <button type="submit" class= "btn btn-primary btn-block">Submit</button>
 </form>        
-<div class="container">
+<div class="row">
 <div class="card-block" id="formatted-address"></div> 
 <div class="card-block" id="address-components"></div>
 <div class="card-block" id="geometry"></div>
@@ -42,15 +40,19 @@
 </div> 
 </div>
 </header>
-<section class ="infowindow-content">
-<div class="row">
-      <div class="col-md-4">
-<div class = "photo"></div>
-      </div>
-      </div>
-</section>
-<input id="pac-input" class="controls" type="text" placeholder="Search_Box">
- <div id ="map"></div>
+<section class="container-fluid">
+        <div class="row row-table">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3 class="section-heading uppercase">Search Map</h3>
+                    </div>
+                </div>
+            </div>
+            </div>
+  </section> 
+  <input id="pac-input" class="controls" type="text" placeholder="Search_Box">
+    <div id="map"></div>
  <footer>
     <div class="row footer-details">
       <div class="col-sm-4">
@@ -65,54 +67,9 @@
       </div>
     </div>
   </footer>
-  <script>
-  var locationForm = document.getElementById('location-form');   
-locationForm.addEventListener("submit", geocode);  
-function geocode(e){
-   e.preventDefault();
-         var location = document.getElementById('location-input').value;
-         axios.get('https://maps.googleapis.com/maps/api/geocode/json?',{
-             params: {
-             address: location,
-             key:'AIzaSyDDHHyac2SiOYPNYxXMK7rqJjnB8nCaaxE'
-             }
-         })
-         .then(function(response){
-             console.log(response);
-
-            var formattedAddress = response.data.results[0].formatted_address;
-        var formattedAddressOutput =`
-        <ul class="list-group">
-        <li class="lsit-group-item">${formattedAddress}</li>
-        </ul>`;
-
-var addressComponents = response.data.results[0].address_components;
-var addressComponentsOutput ='<ul class="list-group">';
-for(var i=0;i < addressComponents.length; i++) {
-    addressComponentsOutput +=`
-    <li class="list-group-item"><strong>${addressComponents[i].types[0]}</strong>: ${addressComponents[i].long_name}</li>
-    `;
-     }
-     addressComponentsOutput += '</ul>';
-
-        var lat = response.data.results[0].geometry.location.lat;
-        var lng = response.data.results[0].geometry.location.lng;
-        var geometryOutput =`
-        <ul class="list-group">
-        <li class="lsit-group-item"><strong>Latitude</strong>: ${lat}</li>
-        </ul>;
-        <li class="lsit-group-item"><strong>Longitude</strong>: ${lng}</li>
-        </ul>`;
-        document.getElementById("formatted-address").innerHTML = formattedAddressOutput;
-        document.getElementById("address-components").innerHTML = addressComponentsOutput;
-        document.getElementById("geometry").innerHTML = geometryOutput;
-        
-        })
-         .catch(function(error){
-             console.log(eror);
-         });
-       
-     }
-  </script>
+  <script  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDHHyac2SiOYPNYxXMK7rqJjnB8nCaaxE&callback=initAutocomplete&initMap&libraries=places" async defer></script>
+  <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
+   <script src="js/search.js"></script>
+   <script src="js/geocode.js"></script> 
 </body>
 </html>

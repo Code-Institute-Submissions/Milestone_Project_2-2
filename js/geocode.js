@@ -1,5 +1,5 @@
-/*var locationForm = document.getElementById('location-form');   
-locationForm.addEventListener("submit", geocode);  
+var locationForm = document.getElementById('location-form');   
+locationForm.addEventListener("submit", geocode); 
 function geocode(e){
    e.preventDefault();
          var location = document.getElementById('location-input').value;
@@ -44,3 +44,4 @@ for(var i=0;i < addressComponents.length; i++) {
              console.log(eror);
          });
         }
+        

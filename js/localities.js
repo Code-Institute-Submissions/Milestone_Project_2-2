@@ -1,4 +1,4 @@
-function initMap(){
+/*function initMap(){
 let location = new Object();
 navigator.geolocation.getCurrentPosition(function(pos){
 location.lat = pos.coords.latitude;

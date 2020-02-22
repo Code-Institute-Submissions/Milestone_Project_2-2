@@ -1,5 +1,5 @@
 /* ----------This code is a combination of Google maps API example codes which i have modfied to the best of my abilit to suit my project needs*/
-var map;
+/*var map;
 function initMap() {
  map = new google.maps.Map(document.getElementById('map'), {
   zoom: 4,
