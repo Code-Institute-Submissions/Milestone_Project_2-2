@@ -8,10 +8,11 @@ function geocode(e){
              address: location,
              key:'AIzaSyDDHHyac2SiOYPNYxXMK7rqJjnB8nCaaxE'
              }
+            
          })
          .then(function(response){
              console.log(response);
-
+             
             var formattedAddress = response.data.results[0].formatted_address;
         var formattedAddressOutput =`
         <ul class="list-group">
@@ -43,5 +44,7 @@ for(var i=0;i < addressComponents.length; i++) {
          .catch(function(error){
              console.log(eror);
          });
+         
         }
+    
         
