@@ -38,25 +38,12 @@ h2, h {
     display: flex;
 }
 
-#map-info, data {
-    height: 100%;
-    background-size: cover;
-}
 
 .uppercase {
     text-transform: uppercase;
     background: no-repeat;
 }
 
-.destinations {
-    text-align: center;
-    min-height: 0px;
-    font-size: medium;
-    font-family: 'Roboto', sans-serif;
-    font-weight: bold;
-    padding: 0;
-
-}
 
 .col-sm-4 {
     position: relative;
